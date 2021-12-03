@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build Editor
+      - name: Build
         working-directory: ./elena-frontend
         run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
