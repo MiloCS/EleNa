@@ -1,6 +1,5 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
 import Routing from "./routing.js";
 
 export default function map() {
