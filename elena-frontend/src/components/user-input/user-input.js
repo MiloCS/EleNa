@@ -19,10 +19,11 @@ export default function UserInput() {
       <Title/>
       <hr></hr>
       <Box align="left" sx={{ padding: '2em', paddingTop: '0', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
-        <ElevationInput elevation={elevation} setElevation={setElevation}/>
-        <DistanceInput distancePercentage={distancePercentage} setDistancePercentage={setDistancePercentage}/>
         <SourceInput source={source} setSource={setSource} />
         <DestinationInput destination={destination} setDestination={setDestination} />
+        <ElevationInput elevation={elevation} setElevation={setElevation}/>
+        <DistanceInput distancePercentage={distancePercentage} setDistancePercentage={setDistancePercentage}/>
+        
       </Box>
     </div>
   );

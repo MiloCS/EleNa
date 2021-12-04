@@ -44,8 +44,8 @@ export default function DestinationInput({destination, setDestination}) {
   };
 
   return (
-    <Box sx={{ marginTop: '30px', width: '80%'  }}>
-      <Typography variant="h4" id="distance-percentage-slider" gutterBottom>
+    <Box sx={{ marginTop: '10px', width: '80%'  }}>
+      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
         Destination:
       </Typography>
         <Autocomplete
