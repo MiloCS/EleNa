@@ -8,11 +8,11 @@ export default function App() {
       <Box
         sx={{
           display: 'grid',
-          bgcolor: 'white',
-          gridAutoColumns: '1fr',
+          bgcolor: '#5f71a1',
+          gridAutoColumns: '1fr'
         }}
       >
-        <Box>
+        <Box sx={{margin: '1em', color: 'lightgrey'}}>
           <UserInput/>
         </Box>
         <Box sx={{ gridColumn: '2 / 4' }}>

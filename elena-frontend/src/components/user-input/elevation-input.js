@@ -15,25 +15,26 @@ export default function ElevationInput({elevation, setElevation}) {
       exclusive: true,
     };
   const choices = [
-    <ToggleButton value="maxElevation" key="maxElevation">
-      <Typography variant="h6" component="div" align='center' style={{ marginRight: '3px' }}>
+    <ToggleButton size="small" value="maxElevation" key="maxElevation">
+      <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Max
       </Typography>
-      <LandscapeIcon fontSize='large'/>
+      <LandscapeIcon fontSize='medium'/>
     </ToggleButton>,
-    <ToggleButton value="minElevation" key="minElevation">
-      <Typography variant="h6" component="div" align='center' style={{ marginRight: '3px' }}>
+    <ToggleButton size="small" value="minElevation" key="minElevation">
+      <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Min 
       </Typography>
-      <DirectionsBikeIcon fontSize='large'/>
+      <DirectionsBikeIcon fontSize='medium'/>
     </ToggleButton>,
   ];
   return (
-    <Box sx={{ marginTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <Typography variant="h4" id="elevation-choice" gutterBottom>
+    <Box sx={{ marginTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
+      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="elevation-choice" gutterBottom>
         Max/Min Route Elevation:
       </Typography>
-      <ToggleButtonGroup size="large" {...control}>
+      <ToggleButtonGroup color="secondary" size="large" {...control}>
+        
         {choices}
       </ToggleButtonGroup>
     </Box>
