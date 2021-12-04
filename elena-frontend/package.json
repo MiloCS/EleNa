@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "firebase": "^9.6.0",
+    "graph-from-osm": "^1.0.0",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
     "leaflet-routing-machine": "^3.2.12",
