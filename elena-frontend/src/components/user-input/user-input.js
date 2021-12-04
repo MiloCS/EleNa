@@ -10,6 +10,7 @@ import { OVERPASS_API, OVERPASS_REQUEST_BODY } from '../../Config';
 import post from '../../http-request-helpers/post';
 import graphFromOsm from 'graph-from-osm';
 import {useRoutingContext} from '../../context/routing-context';
+import './inputs.css';
 
 export default function UserInput() {
   // "maxElevation" user wants maximum elevation, "minElevation" if user wants minimum elevation for path

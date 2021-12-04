@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+
 export default function Title() {
   return (
     <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(2)' }}>
