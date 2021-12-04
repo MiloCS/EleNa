@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import get from '../../get';
+import get from '../../http-request-helpers/get';
 import { GEOCODER_API } from '../../Config';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
