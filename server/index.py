@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json, osmnx
 from gather_data import get_graph
 from networkx import single_source_dijkstra as ssd
 from routing import MinRouter, MaxRouter
 
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/route', methods=['POST'])
 def routing():
