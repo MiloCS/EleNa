@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
@@ -13,8 +13,12 @@ L.Marker.prototype.options.icon = L.icon({
 
 export default function Routing() {
   const map = useMap();
+  // eslint-disable-next-line
   let [routingInfo, setRoutingInfo]= useRoutingContext();
   const geoJSON = routingInfo.geoJSON;
+  const sourceCoords = routingInfo.source;
+  const destinationCoords = routingInfo.destination;
+
   console.log(routingInfo);
   useEffect(() => {
     if (!map || !geoJSON) return;
@@ -30,9 +34,23 @@ export default function Routing() {
     // .addTo(map);
     console.log(geoJSON);
     const routingControl = L.geoJSON(geoJSON).addTo(map);
-
     return () => map.removeControl(routingControl);
   }, [geoJSON, map]);
+
+  useEffect(() => {
+    const boundary = [];
+    if (sourceCoords) {
+      L.marker(sourceCoords).addTo(map);
+      boundary.push(sourceCoords)
+    }
+    if (destinationCoords) {
+      L.marker(destinationCoords).addTo(map);
+      boundary.push(destinationCoords)
+    }
+    if (boundary.length !== 0) {
+      map.fitBounds(L.latLngBounds([boundary]));
+    }
+  }, [sourceCoords, destinationCoords, map]);
 
   return null;
 }

@@ -33,7 +33,14 @@ export default function DistanceInput({distancePercentage, setDistancePercentage
       </Typography>
        <Grid container spacing={2} alignItems="center">
         <Grid item xs>
-          <Slider
+          <Slider sx={{
+              color: 'white',
+              '& .MuiSlider-thumb': {
+                borderRadius: '1px',
+              }
+            }}
+            
+            
             aria-label="x% of the shortest path"
             value={distancePercentage}
             onChange={handleSliderChange}
@@ -49,7 +56,7 @@ export default function DistanceInput({distancePercentage, setDistancePercentage
         </Grid>
         <Grid item style={{ display: 'inherit'}}>
           <Input
-            style={{ width: '50px', color: 'white'}}
+            style={{ width: '50px', color: 'black'}}
             value={distancePercentage}
             onChange={handleInputChange}
             onBlur={handleBlur}

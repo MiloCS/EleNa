@@ -5,7 +5,7 @@ import get from '../../http-request-helpers/get';
 import { GEOCODER_API } from '../../Config';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-
+import {useRoutingContext} from '../../context/routing-context';
 export default function DestinationInput({destination, setDestination}) {
   const [geocoderResponse, setGeocoderResponse] = useState({
       data: null,
@@ -13,6 +13,8 @@ export default function DestinationInput({destination, setDestination}) {
       error: null,
   });
   const [loadingText, setLoadingText] = useState('Press enter to search.')
+  // eslint-disable-next-line
+  const [routingInfo, setRoutingInfo] = useRoutingContext();
   const handleInputChange = (event) => {
     // user must press enter to send API request
     setGeocoderResponse({
@@ -41,6 +43,10 @@ export default function DestinationInput({destination, setDestination}) {
   const handleUserSelect= (event, value, reason) => {
     console.log(value)
     setDestination(value);
+    setRoutingInfo((prev) => ({
+      ...prev,
+      destination: [value.lat, value.lon]
+    }))
   };
 
   return (
