@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Title from './title.js';
 import ElevationInput from './elevation-input.js';
 import DistanceInput from './distance-input.js';
@@ -20,13 +20,14 @@ export default function UserInput() {
   const [source, setSource] = useState('');
   const [destination, setDestination] = useState('');
   // finds nodes and ways
+  // eslint-disable-next-line
   const [overpassAPIResponse, setOverpassAPIResponse] = useState({
       data: null,
       loading: true,
       error: null,
   });
-
-  let [routingInfo, setRoutingInfo] = useRoutingContext();
+  // eslint-disable-next-line
+  const [routingInfo, setRoutingInfo] = useRoutingContext();
 
   const algorithm = () => {
 
