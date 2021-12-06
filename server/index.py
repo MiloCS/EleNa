@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import json
+import json, osmnx
 from gather_data import get_graph
 from networkx import single_source_dijkstra as ssd
 from routing import MinRouter, MaxRouter
@@ -16,7 +16,8 @@ def routing():
         place = data['place']
         percent = data['percent']
         route_type = data['type']
-    except e:
+    except Exception as e:
+        print(e)
         return "Not all necessary parameters were included", 400
 
     if route_type != "max" and route_type != "min":
@@ -38,8 +39,11 @@ def get_path(start, end, place, percent, route_type):
 
     startnode = osmnx.distance.get_nearest_node(graph, start)
     endnode = osmnx.distance.get_nearest_node(graph, end)
+    print(startnode)
+    print(endnode)
+    
     percent_decimal = percent / 100.0
-    dist, _ = ssd(startnode, endnode, weight='length')
+    dist, _ = ssd(graph, startnode, endnode, weight='length')
     return router.get_route(startnode, endnode, dist * percent_decimal)
 
 
