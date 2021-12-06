@@ -9,7 +9,7 @@ export default function App() {
       <Box
         sx={{
           display: 'grid',
-          bgcolor: '#7D94D4',
+          bgcolor: '#becfff',
           gridAutoColumns: '1fr'
         }}
       >

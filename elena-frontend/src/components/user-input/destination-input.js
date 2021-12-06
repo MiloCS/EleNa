@@ -6,6 +6,7 @@ import { GEOCODER_API } from '../../Config';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import {useRoutingContext} from '../../context/routing-context';
+
 export default function DestinationInput({destination, setDestination}) {
   const [geocoderResponse, setGeocoderResponse] = useState({
       data: null,
@@ -25,6 +26,7 @@ export default function DestinationInput({destination, setDestination}) {
     setLoadingText("Press enter to search.");
   }
 
+  // search for place using geocoder after user selects enter
   const handleEnter = (event) => {
     const onError = () => {
 

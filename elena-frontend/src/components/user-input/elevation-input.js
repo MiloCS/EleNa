@@ -7,13 +7,15 @@ import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import Box from '@mui/material/Box';
 
 export default function ElevationInput({elevation, setElevation}) {
-    const control = {
-      value: elevation,
-      onChange: (event, elevationChoice) => {
-        setElevation(elevationChoice);
-      },
-      exclusive: true,
-    };
+
+  const control = {
+    value: elevation,
+    onChange: (event, elevationChoice) => {
+      setElevation(elevationChoice);
+    },
+    exclusive: true,
+  };
+  
   const choices = [
     <ToggleButton size="small" value="maxElevation" key="maxElevation">
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
@@ -28,6 +30,7 @@ export default function ElevationInput({elevation, setElevation}) {
       <DirectionsBikeIcon fontSize='medium'/>
     </ToggleButton>,
   ];
+
   return (
     <Box sx={{ marginTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="elevation-choice" gutterBottom>

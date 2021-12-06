@@ -25,6 +25,7 @@ export default function SourceInput({source, setSource}) {
     setLoadingText("Press enter to search.");
   }
 
+  // search for place using geocoder after user selects enter
   const handleEnter = (event) => {
     const onError = () => {
 

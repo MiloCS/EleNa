@@ -6,9 +6,28 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import { useMap } from "react-leaflet";
 import {useRoutingContext} from '../../context/routing-context';
-// Code from https://codesandbox.io/s/lroutingcontrol-on-react-leaflet-v3-with-hooks-vk6es?file=/package.json:407-428 
+
 L.Marker.prototype.options.icon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png"
+});
+
+// icons from https://github.com/pointhi/leaflet-color-markers
+const sourceIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+const destinationIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
 });
 
 export default function Routing() {
@@ -20,31 +39,23 @@ export default function Routing() {
   const destinationCoords = routingInfo.destination;
 
   console.log(routingInfo);
+  // add optimal route onto map
   useEffect(() => {
     if (!map || !geoJSON) return;
-
-    // const routingControl = L.Routing.control({
-    //   waypoints: [L.latLng(57.74, 11.94), L.latLng(57.6792, 11.949)],
-    //   routeWhileDragging: true,
-    // })
-    // .on('routesfound', function(e) {
-    //     var routes = e.routes;
-    //     console.log(routes);
-    // })
-    // .addTo(map);
     console.log(geoJSON);
     const routingControl = L.geoJSON(geoJSON).addTo(map);
     return () => map.removeControl(routingControl);
   }, [geoJSON, map]);
 
+  // auto-focus map
   useEffect(() => {
     const boundary = [];
     if (sourceCoords) {
-      L.marker(sourceCoords).addTo(map);
+      L.marker(sourceCoords, {icon: sourceIcon}).addTo(map);
       boundary.push(sourceCoords)
     }
     if (destinationCoords) {
-      L.marker(destinationCoords).addTo(map);
+      L.marker(destinationCoords, {icon: destinationIcon}).addTo(map);
       boundary.push(destinationCoords)
     }
     if (boundary.length !== 0) {

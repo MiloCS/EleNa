@@ -36,7 +36,6 @@ export default function UserInput() {
     }
     const onSuccess = (resp) => {
       const graph = graphFromOsm.osmDataToGraph(resp.data);
-      console.log(graph);
       setRoutingInfo((prev) => ({
         ...prev,
         geoJSON: graph
@@ -44,11 +43,6 @@ export default function UserInput() {
     }
 
     post(setOverpassAPIResponse, OVERPASS_API, onError, onSuccess, OVERPASS_REQUEST_BODY(50, source.lat, source.lon, destination.lat, destination.lon))
-    // const generateGraph = async (settings) => {
-    //   const osmData = await graphFromOsm.getOsmData(settings);   // Import OSM raw data
-    //   const graph = graphFromOsm.osmDataToGraph(osmData)         // Here is your graph
-    //   console.log("Your graph contains " + graph.features.length + " nodes ans links.");
-    // }
   }
 
   return (
@@ -60,7 +54,9 @@ export default function UserInput() {
         <DestinationInput destination={destination} setDestination={setDestination} />
         <ElevationInput elevation={elevation} setElevation={setElevation}/>
         <DistanceInput distancePercentage={distancePercentage} setDistancePercentage={setDistancePercentage}/>
-        
+      
+      </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <SearchButton algorithm={algorithm} />
       </Box>
     </div>
