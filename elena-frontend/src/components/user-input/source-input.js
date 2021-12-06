@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import get from '../../http-request-helpers/get';
-import { GEOCODER_API } from '../../Config';
+import { GEOCODER_API, REVERSE_GEOCODER_API } from '../../Config';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import {useRoutingContext} from '../../context/routing-context';
 export default function SourceInput({source, setSource}) {
   const [geocoderResponse, setGeocoderResponse] = useState({
-      data: null,
-      loading: true,
-      error: null,
+    data: null,
+    loading: true,
+    error: null,
+  });
+  // eslint-disable-next-line
+  const [reverseGeocoderResponse, setReverseGeocoderResponse] = useState({
+    data: null,
+    loading: true,
+    error: null,
   });
   const [loadingText, setLoadingText] = useState('Press enter to search.')
   // eslint-disable-next-line
@@ -48,6 +54,18 @@ export default function SourceInput({source, setSource}) {
       ...prev,
       source: [value.lat, value.lon]
     }))
+        const onError = () => {
+
+    }
+    const onSuccess = (resp) => {
+      setSource({
+        ...value,
+        ...resp.data
+        }
+      );
+    }
+    // search for address name to store
+    get(setReverseGeocoderResponse, REVERSE_GEOCODER_API(value.lat, value.lon), onError, onSuccess)
   };
 
   return (

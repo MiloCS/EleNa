@@ -15,15 +15,15 @@ export default function ElevationInput({elevation, setElevation}) {
     },
     exclusive: true,
   };
-  
+
   const choices = [
-    <ToggleButton size="small" value="maxElevation" key="maxElevation">
+    <ToggleButton size="small" value="max" key="max">
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Max
       </Typography>
       <LandscapeIcon fontSize='medium'/>
     </ToggleButton>,
-    <ToggleButton size="small" value="minElevation" key="minElevation">
+    <ToggleButton size="small" value="min" key="min">
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Min 
       </Typography>

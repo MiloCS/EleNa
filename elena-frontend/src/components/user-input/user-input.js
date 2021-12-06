@@ -6,15 +6,15 @@ import Box from '@mui/material/Box';
 import SourceInput from './source-input';
 import DestinationInput from './destination-input';
 import SearchButton from './search-button';
-import { OVERPASS_API, OVERPASS_REQUEST_BODY } from '../../Config';
+import { ROUTING_API, ROUTING_REQUEST_BODY } from '../../Config';
 import post from '../../http-request-helpers/post';
 import graphFromOsm from 'graph-from-osm';
 import {useRoutingContext} from '../../context/routing-context';
 
 
 export default function UserInput() {
-  // "maxElevation" user wants maximum elevation, "minElevation" if user wants minimum elevation for path
-  const [elevation, setElevation] = useState('maxElevation');
+  // "max" user wants maximum elevation, "min" if user wants minimum elevation for path
+  const [elevation, setElevation] = useState('max');
   // Distance percentage from shortest path
   const [distancePercentage, setDistancePercentage] = useState(125);
   const [source, setSource] = useState('');
@@ -35,14 +35,28 @@ export default function UserInput() {
       console.log(err);
     }
     const onSuccess = (resp) => {
-      const graph = graphFromOsm.osmDataToGraph(resp.data);
-      setRoutingInfo((prev) => ({
-        ...prev,
-        geoJSON: graph
-      }))
+      console.log(resp.data)
+      // const graph = graphFromOsm.osmDataToGraph(resp.data);
+      // setRoutingInfo((prev) => ({
+      //   ...prev,
+      //   geoJSON: graph
+      // }))
     }
-
-    post(setOverpassAPIResponse, OVERPASS_API, onError, onSuccess, OVERPASS_REQUEST_BODY(50, source.lat, source.lon, destination.lat, destination.lon))
+    function address(){
+      //
+      let city = ''
+      if (source.address.city) {
+        city = source.address.city
+      } else if (source.address.town) {
+        city = source.address.town
+      } else if (source.address.municipality) {
+        city = source.address.municipality
+      } else if (source.address.village) {
+        city = source.address.municipality
+      }
+      return city;
+    }
+    post(setOverpassAPIResponse, ROUTING_API, onError, onSuccess, ROUTING_REQUEST_BODY(source.lat, source.lon, destination.lat, destination.lon, address(), elevation, distancePercentage ))
   }
 
   return (
