@@ -1,24 +1,47 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+import json
+from gather_data import get_graph
+from networkx import single_source_dijkstra as ssd
+from routing import MinRouter, MaxRouter
 
 app = Flask(__name__)
 
+@app.route('/route', methods=['POST'])
+def routing():
+    #parameters should be called start, end, place, percent, and type
+    try:
+        data = request.json
+        start = data['start']
+        end = data['end']
+        place = data['place']
+        percent = data['percent']
+        route_type = data['type']
+    except e:
+        return "Not all necessary parameters were included", 400
 
-@app.route('/max_route')
-def min_route():
-    source = request.args["source"]
-    dest = request.args["dest"]
-    dist = request.args["percent"]
+    if route_type != "max" and route_type != "min":
+        #bad request
+        return "Type must be 'max' or 'min'", 400
 
-    return []
+    result = get_path(start, end, place, percent, route_type)
+    return jsonify(result)
 
+def get_path(start, end, place, percent, route_type):
+    start = (float(start[0]), float(start[1]))
+    end = (float(start[0]), float(start[1]))
 
-@app.route('min_route')
-def max_route():
-    source = request.args["source"]
-    dest = request.args["dest"]
-    dist = request.args["percent"]
+    graph = get_graph(start, end, place)
+    if route_type == 'min':
+        router = MinRouter(graph)
+    else:
+        router = MaxRouter(graph)
 
-    return []
+    startnode = osmnx.distance.get_nearest_node(graph, start)
+    endnode = osmnx.distance.get_nearest_node(graph, end)
+    percent_decimal = percent / 100.0
+    dist, _ = ssd(startnode, endnode, weight='length')
+    return router.get_route(startnode, endnode, dist * percent_decimal)
+
 
 if __name__ == "__main__":
     app.run(port=8080)
