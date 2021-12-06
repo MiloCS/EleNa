@@ -8,7 +8,6 @@ import DestinationInput from './destination-input';
 import SearchButton from './search-button';
 import { ROUTING_API, ROUTING_REQUEST_BODY } from '../../Config';
 import post from '../../http-request-helpers/post';
-import graphFromOsm from 'graph-from-osm';
 import {useRoutingContext} from '../../context/routing-context';
 
 

@@ -15,7 +15,13 @@ export default function universalPost(
   });
 
   axios
-    .post(endpoint, requestBody)
+    .post(endpoint, requestBody, {
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        'Content-Type': 'application/json',
+        'Referrer-Policy': 'no-referrer'
+      }
+    })
     .then((resp) => {
       setResponse({
         data: resp.data,

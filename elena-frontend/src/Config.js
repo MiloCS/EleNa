@@ -1,6 +1,6 @@
 export const GEOCODER_API = 'https://nominatim.openstreetmap.org/search?'
 export const OVERPASS_API = 'http://overpass-api.de/api/interpreter'
-export const ROUTING_API = 'https://api.open-elevation.com/api/v1/lookup'
+export const ROUTING_API = 'localhost:8080/route'
 export function REVERSE_GEOCODER_API(latitude, longitude) {
   return `http://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
 }
