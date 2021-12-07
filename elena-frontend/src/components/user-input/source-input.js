@@ -53,7 +53,8 @@ export default function SourceInput({source, setSource}) {
     setSource(value);
     setRoutingInfo((prev) => ({
       ...prev,
-      source: [value.lat, value.lon]
+      sourceCoords: [value.lat, value.lon],
+      sourceName: value.display_name
     }))
         const onError = () => {
 

@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json, osmnx
 from gather_data import get_graph
 from networkx import single_source_dijkstra as ssd
+from networkx.readwrite import json_graph
 from routing import MinRouter, MaxRouter
 
 
@@ -46,9 +47,10 @@ def get_path(start, end, place, percent, route_type):
     
     percent_decimal = percent / 100.0
     dist, _ = ssd(graph, startnode, endnode, weight='length')
-    route_nodes = router.get_route(startnode, endnode, dist * percent_decimal)[1]
+    route_nodes = router.get_route(startnode, endnode, dist * percent_decimal)
+    print(route_nodes)
     gnodes = graph.nodes()
-    result = list(map(lambda x: gnodes[x], route_nodes))
+    result = list(map(lambda x: gnodes[x], route_nodes[1]))
     return result
 
 

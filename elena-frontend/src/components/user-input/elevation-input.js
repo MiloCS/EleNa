@@ -11,7 +11,9 @@ export default function ElevationInput({elevation, setElevation}) {
   const control = {
     value: elevation,
     onChange: (event, elevationChoice) => {
-      setElevation(elevationChoice);
+      if (elevationChoice !== null) {
+        setElevation(elevationChoice);
+      }
     },
     exclusive: true,
   };
@@ -37,7 +39,6 @@ export default function ElevationInput({elevation, setElevation}) {
         Max/Min Route Elevation:
       </Typography>
       <ToggleButtonGroup color="secondary" size="large" {...control}>
-        
         {choices}
       </ToggleButtonGroup>
     </Box>

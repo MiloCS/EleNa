@@ -35,11 +35,10 @@ export default function UserInput() {
     }
     const onSuccess = (resp) => {
       console.log(resp.data)
-      // const graph = graphFromOsm.osmDataToGraph(resp.data);
-      // setRoutingInfo((prev) => ({
-      //   ...prev,
-      //   geoJSON: graph
-      // }))
+      setRoutingInfo((prev) => ({
+        ...prev,
+        graph: resp.data
+      }))
     }
     function address(){
       //
@@ -51,7 +50,7 @@ export default function UserInput() {
       } else if (source.address.municipality) {
         city = source.address.municipality
       } else if (source.address.village) {
-        city = source.address.municipality
+        city = source.address.village
       }
       return city;
     }
