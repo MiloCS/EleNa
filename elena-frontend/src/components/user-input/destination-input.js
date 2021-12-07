@@ -53,7 +53,8 @@ export default function DestinationInput({destination, setDestination}) {
     setDestination(value);
     setRoutingInfo((prev) => ({
       ...prev,
-      destination: [value.lat, value.lon]
+      destinationCoords: [value.lat, value.lon],
+      destinationName: value.display_name
     }))
     const onError = () => {
 
@@ -64,12 +65,6 @@ export default function DestinationInput({destination, setDestination}) {
         ...resp.data
         }
       );
-      console.log(value)
-      console.log(resp.data)
-      console.log({
-        ...value,
-        ...resp.data
-        })
     }
     // search for address name to store
     get(setReverseGeocoderResponse, REVERSE_GEOCODER_API(value.lat, value.lon), onError, onSuccess)

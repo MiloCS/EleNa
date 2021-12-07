@@ -17,7 +17,6 @@ export default function universalPost(
   axios
     .post(endpoint, requestBody, {
       headers: {
-        // Overwrite Axios's automatically set Content-Type
         'Referrer-Policy': 'no-referrer'
       }
     })
