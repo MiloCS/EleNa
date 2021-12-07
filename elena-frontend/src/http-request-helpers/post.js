@@ -18,7 +18,6 @@ export default function universalPost(
     .post(endpoint, requestBody, {
       headers: {
         // Overwrite Axios's automatically set Content-Type
-        'Content-Type': 'application/json',
         'Referrer-Policy': 'no-referrer'
       }
     })

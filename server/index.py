@@ -32,7 +32,8 @@ def routing():
 
 def get_path(start, end, place, percent, route_type):
     start = (float(start[0]), float(start[1]))
-    end = (float(start[0]), float(start[1]))
+    end = (float(end[0]), float(end[1]))
+
 
     graph = get_graph(start, end, place)
     if route_type == 'min':
@@ -40,14 +41,15 @@ def get_path(start, end, place, percent, route_type):
     else:
         router = MaxRouter(graph)
 
-    startnode = osmnx.distance.get_nearest_node(graph, start)
-    endnode = osmnx.distance.get_nearest_node(graph, end)
-    print(startnode)
-    print(endnode)
+    startnode = osmnx.nearest_nodes(graph, X=start[1], Y=start[0])
+    endnode = osmnx.nearest_nodes(graph, X=end[1], Y=end[0])
     
     percent_decimal = percent / 100.0
     dist, _ = ssd(graph, startnode, endnode, weight='length')
-    return router.get_route(startnode, endnode, dist * percent_decimal)
+    route_nodes = router.get_route(startnode, endnode, dist * percent_decimal)[1]
+    gnodes = graph.nodes()
+    result = list(map(lambda x: gnodes[x], route_nodes))
+    return result
 
 
 if __name__ == "__main__":
