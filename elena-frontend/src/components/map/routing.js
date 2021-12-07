@@ -46,24 +46,25 @@ export default function Routing() {
   useEffect(() => {
     if (!map || !graph) return;
     const nodesForRoute = graph.map((coordinates) => [coordinates.y, coordinates.x])
-    L.polyline(nodesForRoute).addTo(map);
     // set markers
     markers.current.forEach(marker => map.removeLayer(marker));
     markers.current.length = 0;
+    const route = L.polyline(nodesForRoute);
+    map.addLayer(route);
+    markers.current.push(route);
     const sourceMarker = L.marker(nodesForRoute[0], {icon: sourceIcon}).bindPopup(sourceName);
     map.addLayer(sourceMarker);
     const destinationMarker = L.marker(nodesForRoute[nodesForRoute.length - 1], {icon: destinationIcon}).bindPopup(destinationName);
     map.addLayer(destinationMarker);
     markers.current.push(sourceMarker);
     markers.current.push(destinationMarker);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [destinationName, graph, map, sourceName]);
 
   // auto-focus map
   useEffect(() => {
     const boundary = [];
     const newMarkers = [];
-    console.log(markers)
+
     markers.current.forEach(marker => map.removeLayer(marker));
     markers.current.length = 0
     if (sourceCoords) {
@@ -83,7 +84,6 @@ export default function Routing() {
     if (boundary.length !== 0) {
       map.fitBounds(L.latLngBounds([boundary]));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sourceCoords, destinationCoords, map, sourceName, destinationName]);
   return null;
 }

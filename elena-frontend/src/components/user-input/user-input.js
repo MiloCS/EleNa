@@ -42,17 +42,26 @@ export default function UserInput() {
     }
     function address(){
       //
-      let city = ''
+      let address = ''
       if (source.address.city) {
-        city = source.address.city
+        address = `${source.address.city},`
       } else if (source.address.town) {
-        city = source.address.town
+        address = `${source.address.town},`
       } else if (source.address.municipality) {
-        city = source.address.municipality
+        address = `${source.address.municipality},`
       } else if (source.address.village) {
-        city = source.address.village
+        address = `${source.address.village},`
       }
-      return city;
+      if (source.address.state) {
+        address += ` ${source.address.state}`
+      } else if (source.address.county) {
+        address += ` ${source.address.county}`
+      } else if (source.address.region) {
+        address += ` ${source.address.region}`
+      } else if (source.address.state_district) {
+        address += ` ${source.address.state_district}`
+      }
+      return address;
     }
     post(setOverpassAPIResponse, ROUTING_API, onError, onSuccess, ROUTING_REQUEST_BODY(source.lat, source.lon, destination.lat, destination.lon, address(), elevation, distancePercentage ))
   }
