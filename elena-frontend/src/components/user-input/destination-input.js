@@ -73,7 +73,7 @@ export default function DestinationInput({destination, setDestination}) {
   return (
     <Box sx={{ marginTop: '10px', width: '80%'  }}>
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
-        Destination:
+        Destination Address:
       </Typography>
         <Autocomplete
           id="destination-search"

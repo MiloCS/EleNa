@@ -19,13 +19,13 @@ export default function ElevationInput({elevation, setElevation}) {
   };
 
   const choices = [
-    <ToggleButton size="small" value="max" key="max">
+    <ToggleButton size="large" value="max" key="max">
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Max
       </Typography>
       <LandscapeIcon fontSize='medium'/>
     </ToggleButton>,
-    <ToggleButton size="small" value="min" key="min">
+    <ToggleButton size="large" value="min" key="min">
       <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" component="div" align='center' style={{ marginRight: '3px' }}>
         Min 
       </Typography>
