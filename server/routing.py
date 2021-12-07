@@ -23,7 +23,11 @@ class MinRouter(Router):
         self.algo = algo
     
     def get_route(self, start, end, max_length, percent):
-        path = ssd(self.g, start, end, weight=self.elevation_diff)[1]
+        if percent < 1.2:
+            myweight = 'length'
+        else:
+            myweight = self.elevation_diff
+        path = ssd(self.g, start, end, weight=myweight)[1]
         print(path)
         return path, get_path_length(self.g, path), get_path_length(self.g, path, elevation=True)
 
@@ -33,7 +37,14 @@ class MaxRouter(Router):
 
     def get_route(self, start, end, max_length, percent):
         #return ssbf(self.g, start, end, weight=self.neg_elevation_diff)
-        return get_max_path(self.g, start, end, percent, max_length)
+        try:
+            paths = simple_paths_cost(self.g, start, end, 1000)
+        except:
+            pass
+        path = ssd(self.g, start, end, weight='length')[1]
+        print(path)
+        return path, get_path_length(self.g, path), get_path_length(self.g, path, elevation=True)
+        #return get_max_path(self.g, start, end, percent, max_length)
 
 def elevation_diff(g, nodeNumA, nodeNumB, edge_attrs):
         nodeA, nodeB = g.nodes()[nodeNumA], g.nodes()[nodeNumB] 

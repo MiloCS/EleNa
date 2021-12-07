@@ -15,14 +15,14 @@ export default function Map() {
   return (
     <MapContainer center={position} zoom={13} style={{ height: "100vh" }}>
       {!graph ? null :
-        <Box sx={{ zIndex: 1000, position: 'absolute', right: 0, backgroundColor: 'white', width: '250px', height: '125px', border: '3px solid black'}}>
-          <Typography variant="h5" align="center" gutterBottom>
-            Route Statistics
+        <Box sx={{ zIndex: 1000, position: 'absolute', right: 10,  top: 10, backgroundColor: '#becfff', width: '200px', height: '120px', border: '2px solid gray', borderRadius: '10px'}}>
+          <Typography variant="h5" align="center" gutterBottom sx={{fontFamily: "Segoe UI",}}>
+            Route Stats
           </Typography>
-          <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
+          <Typography variant="body1" align="center" sx={{fontFamily: "Segoe UI", marginLeft: '4px'}}>
             Distance: {Math.floor(distance)} meters
           </Typography>
-          <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
+          <Typography variant="body1" align="center" sx={{fontFamily: "Segoe UI", marginLeft: '4px'}}>
             Elevation: {Math.floor(elevation)} meters
           </Typography>
         </Box>
