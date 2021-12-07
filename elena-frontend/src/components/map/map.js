@@ -12,6 +12,7 @@ export default function Map() {
   const graph = routingInfo.graph;
   const distance = routingInfo.distance;
   const elevation = routingInfo.elevation;
+
   return (
     <MapContainer center={position} zoom={13} style={{ height: "100vh" }}>
       {!graph ? null :
@@ -20,7 +21,7 @@ export default function Map() {
             Route Statistics
           </Typography>
           <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
-            Distance: {Math.floor(distance)} meters
+            Distance: {distance > 1000 ? `${Math.floor(distance) / 1000} km` : `${Math.floor(distance)} m`}
           </Typography>
           <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
             Elevation: {Math.floor(elevation)} meters
