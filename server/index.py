@@ -46,10 +46,11 @@ def get_path(start, end, place, percent, route_type):
     
     percent_decimal = percent / 100.0
     dist, _ = ssd(graph, startnode, endnode, weight='length')
-    route_nodes = router.get_route(startnode, endnode, dist * percent_decimal)[1]
+    route_nodes, routedist, routeele = router.get_route(startnode, endnode, dist, percent_decimal)
+    print(route_nodes, routedist, routeele)
     gnodes = graph.nodes()
     result = list(map(lambda x: gnodes[x], route_nodes))
-    return result
+    return result, routedist, routeele
 
 
 if __name__ == "__main__":

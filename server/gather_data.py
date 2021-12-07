@@ -1,6 +1,7 @@
 import requests, networkx, pickle, os
 import osmnx
 from collections import OrderedDict
+from routing import simple_paths_cost
 
 def input_elevations(g):
     outer_param_dict = {}
@@ -64,6 +65,10 @@ def get_graph(begin, end, place):
 
 if __name__ == '__main__':
     mg = pickle.load(open("cache/Amherst.obj", "rb"))
-    mg = input_elevations(mg)
-    print(mg.nodes(data=True))
-
+    print(mg[9056574307][9056578512])
+    paths = simple_paths_cost(mg, 9056574307, 9056578512, 60.0)
+    print(mg[9056574307][8320711505])
+    print(paths)
+    # l = networkx.all_simple_paths(mg, 9052567911, 9049627073, cutoff=100)
+    # c = next(l)
+    # print(c)
