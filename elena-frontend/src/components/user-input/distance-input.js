@@ -28,7 +28,7 @@ export default function DistanceInput({distancePercentage, setDistancePercentage
 
   return (
     <Box sx={{ marginTop: '30px' }}>
-      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
+      <Typography sx={{fontFamily: "Segoe UI"}} variant="h7" id="distance-percentage-slider" gutterBottom>
         Percentage of Shortest Path:
       </Typography>
        <Grid container spacing={2} alignItems="center">

@@ -72,9 +72,9 @@ export default function DestinationInput({destination, setDestination}) {
 
   return (
     <Box sx={{ marginTop: '10px', width: '80%'  }}>
-      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
+      {/* <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
         Destination:
-      </Typography>
+      </Typography> */}
         <Autocomplete
           id="destination-search"
           disableClearable
@@ -89,6 +89,7 @@ export default function DestinationInput({destination, setDestination}) {
             <TextField
               {...params}
               label="Destination"
+              sx={{backgroundColor: "#ADD19E"}}
               value={destination}
               onChange={handleInputChange}
               onKeyDown={(e) => {

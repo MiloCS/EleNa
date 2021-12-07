@@ -72,9 +72,9 @@ export default function SourceInput({source, setSource}) {
 
   return (
     <Box sx={{ marginTop: '30px', width: '80%'  }}>
-      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
+      {/* <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="distance-percentage-slider" gutterBottom>
         Source:
-      </Typography>
+      </Typography> */}
         <Autocomplete
           id="source-search"
           disableClearable
@@ -88,6 +88,7 @@ export default function SourceInput({source, setSource}) {
           renderInput={(params) => (
             <TextField
               {...params}
+              sx={{backgroundColor: "#ADD19E"}}
               label="Source"
               value={source}
               onChange={handleInputChange}

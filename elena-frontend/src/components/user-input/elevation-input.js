@@ -35,10 +35,10 @@ export default function ElevationInput({elevation, setElevation}) {
 
   return (
     <Box sx={{ marginTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
-      <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="elevation-choice" gutterBottom>
+      {/* <Typography sx={{fontFamily: "Segoe UI"}} variant="h6" id="elevation-choice" gutterBottom>
         Max/Min Route Elevation:
-      </Typography>
-      <ToggleButtonGroup color="secondary" size="large" {...control}>
+      </Typography> */}
+      <ToggleButtonGroup sx={{backgroundColor: "#a3aecc"}} color="secondary" size="large" {...control}>
         {choices}
       </ToggleButtonGroup>
     </Box>

@@ -68,9 +68,11 @@ export default function UserInput() {
 
   return (
     <div>
-      <Title/>
-      <hr></hr>
-      <Box align="left" sx={{ padding: '2em', paddingTop: '0', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
+      <div style={{backgroundColor: "#f0f1f5"}}>
+        <Title/>
+        <hr></hr>
+      </div>
+      <Box align="left" sx={{ padding: '2em', paddingTop: '0', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <SourceInput source={source} setSource={setSource} />
         <DestinationInput destination={destination} setDestination={setDestination} />
         <ElevationInput elevation={elevation} setElevation={setElevation}/>
