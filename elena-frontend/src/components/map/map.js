@@ -10,6 +10,8 @@ export default function Map() {
   // eslint-disable-next-line
   const [routingInfo, setRoutingInfo]= useRoutingContext();
   const graph = routingInfo.graph;
+  const distance = routingInfo.distance;
+  const elevation = routingInfo.elevation;
   return (
     <MapContainer center={position} zoom={13} style={{ height: "100vh" }}>
       {!graph ? null :
@@ -18,10 +20,10 @@ export default function Map() {
             Route Statistics
           </Typography>
           <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
-            Distance:
+            Distance: {Math.floor(distance)} meters
           </Typography>
           <Typography variant="h6" align="left" sx={{marginLeft: '4px'}}>
-            Elevation:
+            Elevation: {Math.floor(elevation)} meters
           </Typography>
         </Box>
       }

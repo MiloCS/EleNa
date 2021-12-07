@@ -37,7 +37,9 @@ export default function UserInput() {
       console.log(resp.data)
       setRoutingInfo((prev) => ({
         ...prev,
-        graph: resp.data
+        graph: resp.data[0],
+        distance: resp.data[1],
+        elevation: resp.data[2]
       }))
     }
     function address(){
