@@ -1,7 +1,6 @@
 import requests, networkx, pickle, os
 import osmnx
 from collections import OrderedDict
-from routing import simple_paths_cost
 
 def input_elevations(g):
     outer_param_dict = {}
