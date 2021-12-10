@@ -104,26 +104,29 @@ class MaxRouter(Router):
             path = ssd(self.g, start, end, weight='length')[1]
         return path, self.get_path_length(path), self.get_path_length(path, elevation=True)
     
-    def simple_paths_cost(self, start, end, max_length, max):
+    def simple_paths_cost(self, start, end, max_length, max_bool):
         G = self.g
-        visited = dict.fromkeys([source])
-        stack = [(v for u, v in G.edges(source))]
-        while stack:
+        seen = {}
+        seen[start] = None
+        generator_stack = [(vertex for connection, vertex in G.edges(start))]
+        while len(stack) > 0:
+            #popping from stack
             children = stack[-1]
-            child = next(children, None)
-            if child is None:
-                stack.pop()
-                visited.popitem()
-            elif self.get_path_length(G, visited) <= cutoff:
-                if child in visited:
+            node = next(children, None)
+            if node is None:
+                seen.popitem()
+                generator_stack.pop()
+            elif self.get_path_length(G, seen) <= max_length and max_bool:
+                if node in seen:
                     continue
-                if child in targets:
-                    yield list(visited) + [child]
-                visited[child] = None
-                if targets - set(visited.keys()):
-                    stack.append((v for u, v in G.edges(child)))
+                if node == target:
+                    yield list(seen).append(node)
+                seen[node] = None
+                if target not in set(seen.keys()):
+                    generator_stack.append((vertex for connection, vertex in G.edges(node)))
                 else:
-                    visited.popitem()
+                    seen.popitem()
             else:
-                stack.pop()
-                visited.popitem()
+                seen.popitem()
+                generator_stack.pop()
+                
