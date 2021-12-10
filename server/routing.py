@@ -22,8 +22,11 @@ class MinRouter(Router):
         super().__init__(g)
     
     def get_route(self, start, end, max_length):
-        path = self.modified_dijkstra(start, end, max_length)
-        #path = ssd(self.g, start, end, weight=self.elevation_diff)[1]
+        try:
+            path = self.modified_dijkstra(start, end, max_length)
+        except Exception as e:
+            print(e)
+            path = ssd(self.g, start, end, weight='length')[1]
         return path, get_path_length(self.g, path), get_path_length(self.g, path, elevation=True)
 
     def modified_dijkstra(self, source, target, cutoff):
@@ -32,6 +35,7 @@ class MinRouter(Router):
 
         prev = {}
         seen = {}
+
         elev = {}
         dist = {}
 
@@ -43,14 +47,11 @@ class MinRouter(Router):
         while frontier:
             e, d, v = heappop(frontier)
             if v in elev:
-                #print("continuing", len(frontier))
                 continue
             
             elev[v] = e
             dist[v] = d
-            #print(d)
             if v == target:
-                #print("breaking")
                 break
             
             for u, e in Gs[v].items():
