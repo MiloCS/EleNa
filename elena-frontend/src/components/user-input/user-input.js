@@ -29,9 +29,17 @@ export default function UserInput() {
   const [routingInfo, setRoutingInfo] = useRoutingContext();
 
   const algorithm = () => {
-
+    setRoutingInfo((prev) => ({
+      ...prev,
+      sent: true,
+      graph: false
+    }))
     const onError = (err) => {
       console.log(err);
+      setRoutingInfo((prev) => ({
+        ...prev,
+        sent: false,
+      }))
     }
     const onSuccess = (resp) => {
       console.log(resp.data)
