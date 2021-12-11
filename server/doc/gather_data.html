@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module gather_data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>gather_data</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmilo%20cason-snow%5Cdocuments%5C520%5Celena%5Cserver%5Cgather_data.py">c:\users\milo cason-snow\documents\520\elena\server\gather_data.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;contains&nbsp;a&nbsp;number&nbsp;of&nbsp;utility&nbsp;functions&nbsp;for&nbsp;gathering&nbsp;map&nbsp;and&nbsp;elevation&nbsp;data<br>
+Gathers&nbsp;map&nbsp;data&nbsp;from&nbsp;osmnx&nbsp;and&nbsp;elevation&nbsp;data&nbsp;from&nbsp;the&nbsp;open&nbsp;elevation&nbsp;api</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="networkx.html">networkx</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="osmnx.html">osmnx</a><br>
+<a href="pickle.html">pickle</a><br>
+</td><td width="25%" valign=top><a href="requests.html">requests</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_graph"><strong>get_graph</strong></a>(begin, end, place)</dt><dd><tt>gets&nbsp;the&nbsp;graph&nbsp;of&nbsp;a&nbsp;place<br>
+:param&nbsp;begin:&nbsp;tuple&nbsp;of&nbsp;lat,&nbsp;lng&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;tuple&nbsp;of&nbsp;lat&nbsp;lng&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;place:&nbsp;string&nbsp;place&nbsp;name&nbsp;-&nbsp;town,&nbsp;city&nbsp;or&nbsp;other&nbsp;municipality&nbsp;type<br>
+:return:&nbsp;networkx&nbsp;graph&nbsp;of&nbsp;place</tt></dd></dl>
+ <dl><dt><a name="-input_elevations"><strong>input_elevations</strong></a>(g)</dt><dd><tt>adds&nbsp;elevations&nbsp;to&nbsp;a&nbsp;osmnx&nbsp;networkx&nbsp;graph&nbsp;using&nbsp;open&nbsp;elevation&nbsp;api<br>
+:param&nbsp;g:&nbsp;networkx&nbsp;graph&nbsp;generated&nbsp;by&nbsp;osmnx.graph.graph_from_place<br>
+:return:&nbsp;new&nbsp;graph&nbsp;with&nbsp;elevations&nbsp;added</tt></dd></dl>
+ <dl><dt><a name="-load_graph"><strong>load_graph</strong></a>(place_name)</dt><dd><tt>loads&nbsp;the&nbsp;networkx&nbsp;biking&nbsp;street&nbsp;map&nbsp;of&nbsp;a&nbsp;place&nbsp;using&nbsp;osmnx<br>
+:param&nbsp;place_name:&nbsp;string&nbsp;place&nbsp;name&nbsp;-&nbsp;town,&nbsp;city&nbsp;or&nbsp;other&nbsp;municipality&nbsp;type<br>
+:return:&nbsp;networkx&nbsp;graph&nbsp;of&nbsp;place</tt></dd></dl>
+</td></tr></table>
+</body></html>

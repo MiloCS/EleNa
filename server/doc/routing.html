@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module routing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>routing</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmilo%20cason-snow%5Cdocuments%5C520%5Celena%5Cserver%5Crouting.py">c:\users\milo cason-snow\documents\520\elena\server\routing.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;module&nbsp;that&nbsp;defines&nbsp;the&nbsp;different&nbsp;types&nbsp;of&nbsp;routing&nbsp;available&nbsp;for&nbsp;EleNa.<br>
+The&nbsp;PathFinder&nbsp;class&nbsp;in&nbsp;index.py&nbsp;uses&nbsp;a&nbsp;strategy&nbsp;pattern&nbsp;with&nbsp;the&nbsp;classes&nbsp;in&nbsp;this&nbsp;module.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Router">Router</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;\<br>
+<a href="#MinRouter">MinRouter</a>&nbsp;&nbsp;<a href="#MaxRouter">MaxRouter</a><br>
+&nbsp;<br>
+Most&nbsp;of&nbsp;the&nbsp;code&nbsp;in&nbsp;this&nbsp;module&nbsp;defines&nbsp;the&nbsp;algorithms&nbsp;for&nbsp;min/maxing&nbsp;elevation.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="networkx.html">networkx</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="routing.html#Router">Router</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="routing.html#MaxRouter">MaxRouter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="routing.html#MinRouter">MinRouter</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MaxRouter">class <strong>MaxRouter</strong></a>(<a href="routing.html#Router">Router</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#MaxRouter">MaxRouter</a>(g,&nbsp;dfs=False)<br>
+&nbsp;<br>
+A&nbsp;<a href="#Router">Router</a>&nbsp;template&nbsp;for&nbsp;maximizing&nbsp;path&nbsp;elevation<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="routing.html#MaxRouter">MaxRouter</a></dd>
+<dd><a href="routing.html#Router">Router</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MaxRouter-__init__"><strong>__init__</strong></a>(self, g, dfs=False)</dt><dd><tt>initializes&nbsp;a&nbsp;<a href="#MaxRouter">MaxRouter</a><br>
+:param&nbsp;g:&nbsp;networkx&nbsp;graph<br>
+:param&nbsp;dfs:&nbsp;whether&nbsp;to&nbsp;use&nbsp;dfs&nbsp;method&nbsp;for&nbsp;routing</tt></dd></dl>
+
+<dl><dt><a name="MaxRouter-get_route"><strong>get_route</strong></a>(self, start, end, max_length)</dt><dd><tt>gets&nbsp;route,&nbsp;minimizing&nbsp;elevation&nbsp;gain,&nbsp;constrained&nbsp;by&nbsp;the&nbsp;max&nbsp;distance&nbsp;given<br>
+:param&nbsp;start:&nbsp;node&nbsp;number&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;node&nbsp;number&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;max_length:&nbsp;maximum&nbsp;length&nbsp;of&nbsp;path&nbsp;generated<br>
+:return:&nbsp;path,&nbsp;path&nbsp;distance,&nbsp;path&nbsp;elevation&nbsp;change</tt></dd></dl>
+
+<dl><dt><a name="MaxRouter-simple_paths_cost"><strong>simple_paths_cost</strong></a>(self, start, end, max_length, max_bool)</dt><dd><tt>a&nbsp;dfs-based&nbsp;approach&nbsp;to&nbsp;finding&nbsp;all&nbsp;paths&nbsp;within&nbsp;a&nbsp;certain&nbsp;length&nbsp;for&nbsp;maximizing&nbsp;elevation<br>
+&nbsp;<br>
+heavily&nbsp;adapated&nbsp;from&nbsp;networkx.all_simple_paths<br>
+:param&nbsp;start:&nbsp;node&nbsp;number&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;node&nbsp;number&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;max_length:&nbsp;maximum&nbsp;length&nbsp;of&nbsp;path&nbsp;generated<br>
+:param&nbsp;max_bool:&nbsp;whether&nbsp;or&nbsp;not&nbsp;to&nbsp;maximize&nbsp;elevation</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="routing.html#Router">Router</a>:<br>
+<dl><dt><a name="MaxRouter-elevation_diff"><strong>elevation_diff</strong></a>(self, nodeNumA, nodeNumB, edge_attrs)</dt><dd><tt>utility&nbsp;function&nbsp;for&nbsp;getting&nbsp;the&nbsp;elevation&nbsp;difference&nbsp;between&nbsp;2&nbsp;nodes&nbsp;in&nbsp;the&nbsp;graph<br>
+:param&nbsp;nodeNumA:&nbsp;first&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;nodeNumB:&nbsp;second&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;edge_attrs:&nbsp;edge&nbsp;attributes&nbsp;-&nbsp;not&nbsp;used&nbsp;in&nbsp;this&nbsp;context,&nbsp;included&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;networkx<br>
+:return:&nbsp;elevation&nbsp;difference</tt></dd></dl>
+
+<dl><dt><a name="MaxRouter-get_path_length"><strong>get_path_length</strong></a>(self, path, elevation=False)</dt><dd><tt>given&nbsp;a&nbsp;list&nbsp;of&nbsp;path&nbsp;nodes,&nbsp;uses&nbsp;graph&nbsp;to&nbsp;find&nbsp;total&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;along&nbsp;path<br>
+:param&nbsp;path:&nbsp;list&nbsp;of&nbsp;path&nbsp;node&nbsp;numbers<br>
+:param&nbsp;elevation:&nbsp;whether&nbsp;function&nbsp;should&nbsp;get&nbsp;elevation&nbsp;difference&nbsp;instead&nbsp;of&nbsp;distance&nbsp;length<br>
+:return:&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;of&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="MaxRouter-modified_dijkstra"><strong>modified_dijkstra</strong></a>(self, start, end, cutoff, max_bool)</dt><dd><tt>performs&nbsp;a&nbsp;modified&nbsp;version&nbsp;of&nbsp;dijkstra's&nbsp;algorithm,&nbsp;trying&nbsp;to&nbsp;min/max&nbsp;elevation<br>
+also&nbsp;keeps&nbsp;track&nbsp;of&nbsp;path&nbsp;distance&nbsp;so&nbsp;it&nbsp;can&nbsp;cutoff&nbsp;the&nbsp;algorithm&nbsp;if&nbsp;paths&nbsp;go&nbsp;past&nbsp;that<br>
+&nbsp;<br>
+heavily&nbsp;adapted&nbsp;from&nbsp;the&nbsp;networkx&nbsp;implementation&nbsp;of&nbsp;dijkstra's&nbsp;algorithm<br>
+:param&nbsp;start:&nbsp;start&nbsp;node&nbsp;num<br>
+:param&nbsp;end:&nbsp;end&nbsp;node&nbsp;num<br>
+:param&nbsp;cutoff:&nbsp;max&nbsp;path&nbsp;length<br>
+:param&nbsp;max_bool:&nbsp;whether&nbsp;or&nbsp;not&nbsp;to&nbsp;maximize&nbsp;elevation<br>
+:return:&nbsp;path&nbsp;list&nbsp;of&nbsp;node&nbsp;nums</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="routing.html#Router">Router</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MinRouter">class <strong>MinRouter</strong></a>(<a href="routing.html#Router">Router</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#MinRouter">MinRouter</a>(g)<br>
+&nbsp;<br>
+A&nbsp;<a href="#Router">Router</a>&nbsp;template&nbsp;for&nbsp;minimizing&nbsp;path&nbsp;elevation<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="routing.html#MinRouter">MinRouter</a></dd>
+<dd><a href="routing.html#Router">Router</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MinRouter-__init__"><strong>__init__</strong></a>(self, g)</dt><dd><tt>initializes&nbsp;a&nbsp;<a href="#MinRouter">MinRouter</a><br>
+:param&nbsp;g:&nbsp;networkx&nbsp;graph</tt></dd></dl>
+
+<dl><dt><a name="MinRouter-get_route"><strong>get_route</strong></a>(self, start, end, max_length)</dt><dd><tt>gets&nbsp;route,&nbsp;minimizing&nbsp;elevation&nbsp;gain,&nbsp;constrained&nbsp;by&nbsp;the&nbsp;max&nbsp;distance&nbsp;given<br>
+:param&nbsp;start:&nbsp;node&nbsp;number&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;node&nbsp;number&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;max_length:&nbsp;maximum&nbsp;length&nbsp;of&nbsp;path&nbsp;generated<br>
+:return:&nbsp;path,&nbsp;path&nbsp;distance,&nbsp;path&nbsp;elevation&nbsp;change</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="routing.html#Router">Router</a>:<br>
+<dl><dt><a name="MinRouter-elevation_diff"><strong>elevation_diff</strong></a>(self, nodeNumA, nodeNumB, edge_attrs)</dt><dd><tt>utility&nbsp;function&nbsp;for&nbsp;getting&nbsp;the&nbsp;elevation&nbsp;difference&nbsp;between&nbsp;2&nbsp;nodes&nbsp;in&nbsp;the&nbsp;graph<br>
+:param&nbsp;nodeNumA:&nbsp;first&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;nodeNumB:&nbsp;second&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;edge_attrs:&nbsp;edge&nbsp;attributes&nbsp;-&nbsp;not&nbsp;used&nbsp;in&nbsp;this&nbsp;context,&nbsp;included&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;networkx<br>
+:return:&nbsp;elevation&nbsp;difference</tt></dd></dl>
+
+<dl><dt><a name="MinRouter-get_path_length"><strong>get_path_length</strong></a>(self, path, elevation=False)</dt><dd><tt>given&nbsp;a&nbsp;list&nbsp;of&nbsp;path&nbsp;nodes,&nbsp;uses&nbsp;graph&nbsp;to&nbsp;find&nbsp;total&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;along&nbsp;path<br>
+:param&nbsp;path:&nbsp;list&nbsp;of&nbsp;path&nbsp;node&nbsp;numbers<br>
+:param&nbsp;elevation:&nbsp;whether&nbsp;function&nbsp;should&nbsp;get&nbsp;elevation&nbsp;difference&nbsp;instead&nbsp;of&nbsp;distance&nbsp;length<br>
+:return:&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;of&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="MinRouter-modified_dijkstra"><strong>modified_dijkstra</strong></a>(self, start, end, cutoff, max_bool)</dt><dd><tt>performs&nbsp;a&nbsp;modified&nbsp;version&nbsp;of&nbsp;dijkstra's&nbsp;algorithm,&nbsp;trying&nbsp;to&nbsp;min/max&nbsp;elevation<br>
+also&nbsp;keeps&nbsp;track&nbsp;of&nbsp;path&nbsp;distance&nbsp;so&nbsp;it&nbsp;can&nbsp;cutoff&nbsp;the&nbsp;algorithm&nbsp;if&nbsp;paths&nbsp;go&nbsp;past&nbsp;that<br>
+&nbsp;<br>
+heavily&nbsp;adapted&nbsp;from&nbsp;the&nbsp;networkx&nbsp;implementation&nbsp;of&nbsp;dijkstra's&nbsp;algorithm<br>
+:param&nbsp;start:&nbsp;start&nbsp;node&nbsp;num<br>
+:param&nbsp;end:&nbsp;end&nbsp;node&nbsp;num<br>
+:param&nbsp;cutoff:&nbsp;max&nbsp;path&nbsp;length<br>
+:param&nbsp;max_bool:&nbsp;whether&nbsp;or&nbsp;not&nbsp;to&nbsp;maximize&nbsp;elevation<br>
+:return:&nbsp;path&nbsp;list&nbsp;of&nbsp;node&nbsp;nums</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="routing.html#Router">Router</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Router">class <strong>Router</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Router">Router</a>(g)<br>
+&nbsp;<br>
+a&nbsp;generic&nbsp;<a href="#Router">Router</a>&nbsp;class&nbsp;that&nbsp;is&nbsp;the&nbsp;superclass&nbsp;for&nbsp;the&nbsp;other&nbsp;classes&nbsp;in&nbsp;this&nbsp;module<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Router-__init__"><strong>__init__</strong></a>(self, g)</dt><dd><tt>initializes&nbsp;<a href="#Router">Router</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;a&nbsp;networkx&nbsp;graph&nbsp;instance&nbsp;variable<br>
+:param&nbsp;g:&nbsp;networkx&nbsp;graph</tt></dd></dl>
+
+<dl><dt><a name="Router-elevation_diff"><strong>elevation_diff</strong></a>(self, nodeNumA, nodeNumB, edge_attrs)</dt><dd><tt>utility&nbsp;function&nbsp;for&nbsp;getting&nbsp;the&nbsp;elevation&nbsp;difference&nbsp;between&nbsp;2&nbsp;nodes&nbsp;in&nbsp;the&nbsp;graph<br>
+:param&nbsp;nodeNumA:&nbsp;first&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;nodeNumB:&nbsp;second&nbsp;node&nbsp;number&nbsp;in&nbsp;graph<br>
+:param&nbsp;edge_attrs:&nbsp;edge&nbsp;attributes&nbsp;-&nbsp;not&nbsp;used&nbsp;in&nbsp;this&nbsp;context,&nbsp;included&nbsp;for&nbsp;compatibility&nbsp;with&nbsp;networkx<br>
+:return:&nbsp;elevation&nbsp;difference</tt></dd></dl>
+
+<dl><dt><a name="Router-get_path_length"><strong>get_path_length</strong></a>(self, path, elevation=False)</dt><dd><tt>given&nbsp;a&nbsp;list&nbsp;of&nbsp;path&nbsp;nodes,&nbsp;uses&nbsp;graph&nbsp;to&nbsp;find&nbsp;total&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;along&nbsp;path<br>
+:param&nbsp;path:&nbsp;list&nbsp;of&nbsp;path&nbsp;node&nbsp;numbers<br>
+:param&nbsp;elevation:&nbsp;whether&nbsp;function&nbsp;should&nbsp;get&nbsp;elevation&nbsp;difference&nbsp;instead&nbsp;of&nbsp;distance&nbsp;length<br>
+:return:&nbsp;length&nbsp;or&nbsp;elevation&nbsp;change&nbsp;of&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="Router-get_route"><strong>get_route</strong></a>(self, start, end, max_length)</dt><dd><tt>template&nbsp;method&nbsp;for&nbsp;the&nbsp;get_route&nbsp;function&nbsp;in&nbsp;this&nbsp;class's&nbsp;subclasses<br>
+:param&nbsp;start:&nbsp;node&nbsp;number&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;node&nbsp;number&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;max_length:&nbsp;maximum&nbsp;length&nbsp;of&nbsp;path&nbsp;generated</tt></dd></dl>
+
+<dl><dt><a name="Router-modified_dijkstra"><strong>modified_dijkstra</strong></a>(self, start, end, cutoff, max_bool)</dt><dd><tt>performs&nbsp;a&nbsp;modified&nbsp;version&nbsp;of&nbsp;dijkstra's&nbsp;algorithm,&nbsp;trying&nbsp;to&nbsp;min/max&nbsp;elevation<br>
+also&nbsp;keeps&nbsp;track&nbsp;of&nbsp;path&nbsp;distance&nbsp;so&nbsp;it&nbsp;can&nbsp;cutoff&nbsp;the&nbsp;algorithm&nbsp;if&nbsp;paths&nbsp;go&nbsp;past&nbsp;that<br>
+&nbsp;<br>
+heavily&nbsp;adapted&nbsp;from&nbsp;the&nbsp;networkx&nbsp;implementation&nbsp;of&nbsp;dijkstra's&nbsp;algorithm<br>
+:param&nbsp;start:&nbsp;start&nbsp;node&nbsp;num<br>
+:param&nbsp;end:&nbsp;end&nbsp;node&nbsp;num<br>
+:param&nbsp;cutoff:&nbsp;max&nbsp;path&nbsp;length<br>
+:param&nbsp;max_bool:&nbsp;whether&nbsp;or&nbsp;not&nbsp;to&nbsp;maximize&nbsp;elevation<br>
+:return:&nbsp;path&nbsp;list&nbsp;of&nbsp;node&nbsp;nums</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-heapify"><strong>heapify</strong></a>(heap, /)</dt><dd><tt>Transform&nbsp;list&nbsp;into&nbsp;a&nbsp;heap,&nbsp;in-place,&nbsp;in&nbsp;O(len(heap))&nbsp;time.</tt></dd></dl>
+ <dl><dt><a name="-heappop"><strong>heappop</strong></a>(heap, /)</dt><dd><tt>Pop&nbsp;the&nbsp;smallest&nbsp;item&nbsp;off&nbsp;the&nbsp;heap,&nbsp;maintaining&nbsp;the&nbsp;heap&nbsp;invariant.</tt></dd></dl>
+ <dl><dt><a name="-heappush"><strong>heappush</strong></a>(heap, item, /)</dt><dd><tt>Push&nbsp;item&nbsp;onto&nbsp;heap,&nbsp;maintaining&nbsp;the&nbsp;heap&nbsp;invariant.</tt></dd></dl>
+ <dl><dt><a name="-heappushpop"><strong>heappushpop</strong></a>(heap, item, /)</dt><dd><tt>Push&nbsp;item&nbsp;on&nbsp;the&nbsp;heap,&nbsp;then&nbsp;pop&nbsp;and&nbsp;return&nbsp;the&nbsp;smallest&nbsp;item&nbsp;from&nbsp;the&nbsp;heap.<br>
+&nbsp;<br>
+The&nbsp;combined&nbsp;action&nbsp;runs&nbsp;more&nbsp;efficiently&nbsp;than&nbsp;<a href="#-heappush">heappush</a>()&nbsp;followed&nbsp;by<br>
+a&nbsp;separate&nbsp;call&nbsp;to&nbsp;<a href="#-heappop">heappop</a>().</tt></dd></dl>
+ <dl><dt><a name="-heapreplace"><strong>heapreplace</strong></a>(heap, item, /)</dt><dd><tt>Pop&nbsp;and&nbsp;return&nbsp;the&nbsp;current&nbsp;smallest&nbsp;value,&nbsp;and&nbsp;add&nbsp;the&nbsp;new&nbsp;item.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;more&nbsp;efficient&nbsp;than&nbsp;<a href="#-heappop">heappop</a>()&nbsp;followed&nbsp;by&nbsp;<a href="#-heappush">heappush</a>(),&nbsp;and&nbsp;can&nbsp;be<br>
+more&nbsp;appropriate&nbsp;when&nbsp;using&nbsp;a&nbsp;fixed-size&nbsp;heap.&nbsp;&nbsp;Note&nbsp;that&nbsp;the&nbsp;value<br>
+returned&nbsp;may&nbsp;be&nbsp;larger&nbsp;than&nbsp;item!&nbsp;&nbsp;That&nbsp;constrains&nbsp;reasonable&nbsp;uses&nbsp;of<br>
+this&nbsp;routine&nbsp;unless&nbsp;written&nbsp;as&nbsp;part&nbsp;of&nbsp;a&nbsp;conditional&nbsp;replacement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;item&nbsp;&gt;&nbsp;heap[0]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item&nbsp;=&nbsp;<a href="#-heapreplace">heapreplace</a>(heap,&nbsp;item)</tt></dd></dl>
+</td></tr></table>
+</body></html>

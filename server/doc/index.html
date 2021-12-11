@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>index</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmilo%20cason-snow%5Cdocuments%5C520%5Celena%5Cserver%5Cindex.py">c:\users\milo cason-snow\documents\520\elena\server\index.py</a></font></td></tr></table>
+    <p><tt>index&nbsp;module&nbsp;for&nbsp;EleNa&nbsp;server<br>
+Includes&nbsp;routing&nbsp;code&nbsp;and&nbsp;a&nbsp;basic&nbsp;<a href="#PathFinder">PathFinder</a>&nbsp;class&nbsp;which&nbsp;can&nbsp;use&nbsp;different&nbsp;routing&nbsp;strategies</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="osmnx.html">osmnx</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="index.html#PathFinder">PathFinder</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PathFinder">class <strong>PathFinder</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PathFinder">PathFinder</a>(start,&nbsp;end,&nbsp;place,&nbsp;percent,&nbsp;route_type)<br>
+&nbsp;<br>
+class&nbsp;that&nbsp;sets&nbsp;up&nbsp;a&nbsp;path&nbsp;search&nbsp;and&nbsp;encapsulates&nbsp;some&nbsp;utility&nbsp;functionality<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PathFinder-__init__"><strong>__init__</strong></a>(self, start, end, place, percent, route_type)</dt><dd><tt>initializes&nbsp;<a href="#PathFinder">PathFinder</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;information&nbsp;from&nbsp;request<br>
+:param&nbsp;start:&nbsp;tuple&nbsp;of&nbsp;lat,&nbsp;lng&nbsp;for&nbsp;start&nbsp;node<br>
+:param&nbsp;end:&nbsp;tuple&nbsp;of&nbsp;lat,&nbsp;lng&nbsp;for&nbsp;end&nbsp;node<br>
+:param&nbsp;place:&nbsp;place&nbsp;name&nbsp;string<br>
+:param&nbsp;percent:&nbsp;int,&nbsp;percent&nbsp;of&nbsp;shortest&nbsp;path&nbsp;route&nbsp;can&nbsp;be<br>
+:param&nbsp;route_type:&nbsp;string,&nbsp;either&nbsp;'min'&nbsp;or&nbsp;'max'</tt></dd></dl>
+
+<dl><dt><a name="PathFinder-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>gets&nbsp;a&nbsp;path&nbsp;using&nbsp;the&nbsp;routing&nbsp;strategy&nbsp;determined&nbsp;during&nbsp;initialization<br>
+:return:&nbsp;path&nbsp;list&nbsp;of&nbsp;node&nbsp;nums,&nbsp;dist&nbsp;of&nbsp;path,&nbsp;elevation&nbsp;change&nbsp;of&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="PathFinder-simplify_route"><strong>simplify_route</strong></a>(self, path)</dt><dd><tt>a&nbsp;helper&nbsp;function&nbsp;to&nbsp;simplify&nbsp;a&nbsp;route&nbsp;based&nbsp;on&nbsp;whether&nbsp;the&nbsp;route&nbsp;continues&nbsp;on&nbsp;the&nbsp;same&nbsp;street<br>
+:param&nbsp;path:&nbsp;list&nbsp;of&nbsp;node&nbsp;numbers&nbsp;in&nbsp;the&nbsp;graph<br>
+:return:&nbsp;new,&nbsp;simplified&nbsp;path&nbsp;node&nbsp;num&nbsp;list</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-routing"><strong>routing</strong></a>()</dt><dd><tt>main&nbsp;router&nbsp;function&nbsp;for&nbsp;the&nbsp;EleNa&nbsp;server<br>
+accepts&nbsp;POST&nbsp;requests&nbsp;with&nbsp;the&nbsp;parameters&nbsp;for&nbsp;the&nbsp;search&nbsp;in&nbsp;the&nbsp;JSON&nbsp;body<br>
+:return:&nbsp;jsonified&nbsp;path,&nbsp;distance&nbsp;and&nbsp;elevation&nbsp;change</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>app</strong> = &lt;Flask 'index'&gt;<br>
+<strong>request</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>
