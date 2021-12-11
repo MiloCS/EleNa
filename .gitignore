@@ -2,3 +2,4 @@
 server/cache
 *__pycache__/
 *.pem
+*.pytest_cache

@@ -111,7 +111,6 @@ class Router:
                         exten_elev = -1 * exten_elev
                     heappush(frontier, (exten_elev, exten_dist, u))
                     prev[u] = v
-        
         path = []
         curr = end
         path.append(curr)
@@ -141,6 +140,8 @@ class MinRouter(Router):
         :param max_length: maximum length of path generated
         :return: path, path distance, path elevation change
         """
+        if max_length is 0:
+            raise networkx.NetworkXNoPath("No path found")
         try:
             path = self.modified_dijkstra(start, end, max_length, False)
         except Exception as e:

@@ -33,9 +33,18 @@ def routing():
         print(e)
         return "Not all necessary parameters were included", 400
 
+    #checking routing preconditions
+
     if route_type != "max" and route_type != "min":
         #bad request
         return "Type must be 'max' or 'min'", 400
+
+    if len(start) < 2 or len(end) < 2:
+        return "Start and end must each be length 2", 400
+
+    if percent < 100 or percent > 200:
+        return "Percent must be between 100 and 200", 400
+
     finder = PathFinder(start, end, place, percent, route_type)
     result = finder.get_path()
     return jsonify(result)
