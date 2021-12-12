@@ -50,6 +50,8 @@ export default function Routing() {
   // add optimal route onto map
   useEffect(() => {
     if (!map || !graph) {
+      markers.current.forEach(marker => map.removeLayer(marker));
+      markers.current.length = 0;
       return;
     };
     const nodesForRoute = graph.map((coordinates) => [coordinates.y, coordinates.x])
