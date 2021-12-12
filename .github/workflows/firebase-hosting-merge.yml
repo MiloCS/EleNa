@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - env:
-          REACT_APP_BACKEND: ${{ secrets.AWS_KEY }}
-        run: export 
+      - name: Create ENV file
+        working-directory: ./elena-frontend
+        run: |
+          touch .env
+          echo REACT_APP_BACKEND = ${{ secrets.AWS_KEY }} >> .env
       - name: Build
         working-directory: ./elena-frontend
         run: npm ci && npm run build
