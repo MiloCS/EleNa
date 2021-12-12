@@ -5,7 +5,7 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 
 export default function Title({algorithm}) {
   return (
-    <Button sx={{width: '50%' }} variant="contained" size="large" startIcon={<RouteIcon />} endIcon={<DirectionsIcon />}onClick={algorithm}>
+    <Button sx={{width: '50%' }} variant="contained" size="large" startIcon={<RouteIcon />} endIcon={<DirectionsIcon />} onClick={algorithm}>
       Find Route
     </Button>
   );

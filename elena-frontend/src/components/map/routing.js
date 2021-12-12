@@ -45,8 +45,7 @@ export default function Routing() {
   // add optimal route onto map
   useEffect(() => {
     if (!map || !graph) return;
-    const nodesForRoute = graph.map((coordinates) => [coordinates.y, coordinates.x]);
-    const wayPoints = nodesForRoute.map((coordinates) => L.latLng(coordinates[0], coordinates[1]));
+    const nodesForRoute = graph.map((coordinates) => [coordinates.y, coordinates.x])
     // set markers
     markers.current.forEach(marker => map.removeLayer(marker));
     markers.current.length = 0;
@@ -59,18 +58,6 @@ export default function Routing() {
     map.addLayer(destinationMarker);
     markers.current.push(sourceMarker);
     markers.current.push(destinationMarker);
-    const routingControl = L.Routing.control({
-      waypoints: wayPoints,
-      routeWhileDragging: false,
-      geocoder: L.Control.Geocoder.nominatim()
-    })
-    .on('routesfound', function(e) {
-      console.log(e.routes)
-      e.routes = [e.routes[0]]
-    })
-    .addTo(map);
-
-    return () => map.removeControl(routingControl);
   }, [destinationName, graph, map, sourceName]);
 
   // auto-focus map
