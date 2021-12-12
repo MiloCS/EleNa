@@ -29,6 +29,11 @@ export default function UserInput() {
   const [routingInfo, setRoutingInfo] = useRoutingContext();
 
   const algorithm = () => {
+    if (!source || !destination ) {
+      alert("Source and destination addresses are not filled in!")
+      return;
+    }
+  
     setRoutingInfo((prev) => ({
       ...prev,
       sent: true,
