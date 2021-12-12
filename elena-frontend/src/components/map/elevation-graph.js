@@ -24,7 +24,6 @@ useEffect(() => {
   
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
-    console.log(markers)
     markers.current.forEach(marker => {
       map.removeLayer(marker)
     });

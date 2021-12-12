@@ -6,7 +6,7 @@ import RouteInfo from './route-info';
 import ElevationGraph from './elevation-graph';
 
 export default function Map() {
-  const position = [51.505, -0.09];
+  const position = [42.3883746, -72.52545997302758];
   // eslint-disable-next-line
   const [routingInfo, setRoutingInfo]= useRoutingContext();
   const graph = routingInfo.graph;
