@@ -86,6 +86,9 @@ When you run 'npm start' in Elena/elena-frontend, this is what you will see.
 
 7. This displays the elevation difference and distance between the two points
 
+8. Elevation count graph, you can hover over each point to distance from source and elevation
+<img src=Pictures/statinfo.PNG width=50% height=50%>
+
 <!-- CONTRIBUTING -->
 
 <a name="contribute"></a>
