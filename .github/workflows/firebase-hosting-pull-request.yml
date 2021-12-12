@@ -9,12 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create ENV file
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_REACT_APP_BACKEND: ${{ secrets.AWS_KEY }}
-          directory: ./elena-frontend
-          file_name: .env.production
       - name: Build
         working-directory: ./elena-frontend
         run: npm ci && npm run build
