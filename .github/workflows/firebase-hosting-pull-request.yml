@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create ENV file
-          uses: SpicyPizza/create-envfile@v1
-          with:
-            envkey_REACT_APP_BACKEND: ${{ secrets.AWS_KEY }}
-            directory: ./elena-frontend
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_BACKEND: ${{ secrets.AWS_KEY }}
+          directory: ./elena-frontend
       - name: Build
         working-directory: ./elena-frontend
         run: npm ci && npm run build
