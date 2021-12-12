@@ -17,7 +17,6 @@ export default function universalPost(
   axios
     .post(endpoint, requestBody, {
       headers: {
-        'Access-Control-Allow-Origin': '*',
         'Referrer-Policy': 'no-referrer'
       }
     })
