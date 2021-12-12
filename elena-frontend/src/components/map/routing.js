@@ -1,14 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import { useMap } from "react-leaflet";
-import {useRoutingContext} from '../../context/routing-context';
+import { useRoutingContext } from '../../context/routing-context';
 
 L.Marker.prototype.options.icon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png"
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
 });
 
 // icons from https://github.com/pointhi/leaflet-color-markers
@@ -34,7 +39,7 @@ export default function Routing() {
   const map = useMap();
   // eslint-disable-next-line
   const [routingInfo, setRoutingInfo]= useRoutingContext();
-  const markers = useRef([]);
+  const markers = routingInfo.markers;
   const graph = routingInfo.graph;
   const sourceCoords = routingInfo.sourceCoords;
   const sourceName = routingInfo.sourceName;
@@ -44,7 +49,9 @@ export default function Routing() {
   console.log(routingInfo);
   // add optimal route onto map
   useEffect(() => {
-    if (!map || !graph) return;
+    if (!map || !graph) {
+      return;
+    };
     const nodesForRoute = graph.map((coordinates) => [coordinates.y, coordinates.x])
     // set markers
     markers.current.forEach(marker => map.removeLayer(marker));
@@ -58,7 +65,7 @@ export default function Routing() {
     map.addLayer(destinationMarker);
     markers.current.push(sourceMarker);
     markers.current.push(destinationMarker);
-  }, [destinationName, graph, map, sourceName]);
+  }, [destinationName, graph, map, markers, sourceName]);
 
   // auto-focus map
   useEffect(() => {
@@ -67,6 +74,7 @@ export default function Routing() {
 
     markers.current.forEach(marker => map.removeLayer(marker));
     markers.current.length = 0
+    console.log(markers)
     if (sourceCoords) {
       const sourceMarker = L.marker(sourceCoords, {icon: sourceIcon}).bindPopup(sourceName);
       newMarkers.concat(sourceMarker);
@@ -84,6 +92,7 @@ export default function Routing() {
     if (boundary.length !== 0) {
       map.fitBounds(L.latLngBounds([boundary]));
     }
-  }, [sourceCoords, destinationCoords, map, sourceName, destinationName]);
+  }, [sourceCoords, destinationCoords, map, sourceName, destinationName, markers]);
+  
   return null;
 }

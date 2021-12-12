@@ -52,10 +52,12 @@ export default function SourceInput({source, setSource}) {
     setSource(value);
     setRoutingInfo((prev) => ({
       ...prev,
+      sent: false,
+      graph: false,
       sourceCoords: [value.lat, value.lon],
       sourceName: value.display_name
     }))
-        const onError = () => {
+    const onError = () => {
 
     }
     const onSuccess = (resp) => {
