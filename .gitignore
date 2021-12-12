@@ -4,3 +4,4 @@ server/cache
 *.pem
 *.pytest_cache
 config.py
+elena-frontend/.env
