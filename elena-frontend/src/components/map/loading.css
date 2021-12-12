@@ -9,7 +9,7 @@ svg.loading {
     text-align: center;
 }
 
-circle {
+.circle {
     fill: none;
     stroke: #215fb1;
     stroke-width: 3;

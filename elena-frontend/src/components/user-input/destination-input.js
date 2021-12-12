@@ -52,6 +52,8 @@ export default function DestinationInput({destination, setDestination}) {
     setDestination(value);
     setRoutingInfo((prev) => ({
       ...prev,
+      sent: false,
+      graph: false,
       destinationCoords: [value.lat, value.lon],
       destinationName: value.display_name
     }))
