@@ -19,6 +19,10 @@ jobs:
       working-directory: ./elena-frontend
       run: npm install
 
+    - name: install jest-dom
+      working-directory: ./elena-frontend
+      run: yarn add -D @testing-library/jest-dom
+  
     - name: run tests
       working-directory: ./elena-frontend
       run: npm test
