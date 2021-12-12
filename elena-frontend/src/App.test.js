@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { expect } from '@jest/globals'
 import userEvent from "@testing-library/user-event";
-import App from '../App';
+import App from './App';
 
 test('renders app', () => {
   render(<App />);
