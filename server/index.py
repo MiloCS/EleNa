@@ -82,10 +82,22 @@ class PathFinder:
         """
         dist, _ = ssd(self.graph, self.startnode, self.endnode, weight='length')
         route_nodes, routedist, routeele = self.router.get_route(self.startnode, self.endnode, dist * self.percent_decimal)
-        gnodes = self.graph.nodes()
-        result = list(map(lambda x: gnodes[x], route_nodes))
         #print(self.simplify_route(route_nodes))
-        return result, routedist, routeele
+        return self.nodes_to_info(route_nodes), routedist, routeele
+
+    def nodes_to_info(self, path):
+        """
+        a helper function which creates the info needed for plotting from a list of node numbers
+        :param path: list of node nums
+        """
+        gnodes = self.graph.nodes()
+        dists = [0.0]
+        for i in range(len(path) - 1):
+            dists.append(self.graph[path[i]][path[i+1]][0]['length'])
+        result = list(map(lambda x: gnodes[x], path))
+        for i in range(len(result)):
+            result[i]['dist_from_start'] = sum(dists[0:i+1])
+        return result
 
     def simplify_route(self, path):
         """
