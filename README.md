@@ -57,7 +57,7 @@ pip install -U flask-cors
 python index.py
 ```
 
-From here on you just need "npm start", "conda activate ox", and "python index.py"
+From here on you only need "npm start", "conda activate ox", and "python index.py"
 
 <!-- Usage -->
 <a name="usage"></a>
@@ -69,7 +69,7 @@ From here on you just need "npm start", "conda activate ox", and "python index.p
 When you run 'npm start' in Elena/elena-frontend, this is what you will see.
 
 ### Interface specs
-![EleNa specs](Pictures/wholeCaptureHighlight.png)
+![EleNa specs](Pictures/wholeCapture.PNG)
 
 1. Click on the box that says "Source" and then type the origin/source address and then press enter. There will be a dropdown menu for the user to choose the exact address. You can input something like "fine arts center" then press enter to get the following options:
 <img src=Pictures/inputPos.PNG width=50% height=50%>
@@ -83,6 +83,8 @@ When you run 'npm start' in Elena/elena-frontend, this is what you will see.
 5. This is the final button to press after selecting all the options above. A path based on the selected preferences will be generated.
 
 6. This is how the path will be shown after using the Find Route button.
+
+7. This displays the elevation difference and distance between the two points
 
 <!-- CONTRIBUTING -->
 
