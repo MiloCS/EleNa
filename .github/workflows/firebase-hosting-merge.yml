@@ -16,6 +16,7 @@ jobs:
         with:
           envkey_REACT_APP_BACKEND: ${{ secrets.AWS_KEY }}
           directory: ./elena-frontend
+          file_name: .env.production
       - name: Build
         working-directory: ./elena-frontend
         run: npm ci && npm run build
