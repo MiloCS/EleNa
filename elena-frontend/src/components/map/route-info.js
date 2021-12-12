@@ -4,6 +4,7 @@ import Loading from './loading'
 import { useRoutingContext } from '../../context/routing-context';
 
 export default function RouteInfo({graph, distance, elevation}) {
+  // eslint-disable-next-line
   const [routingInfo, setRoutingInfo]= useRoutingContext();
   const sent = routingInfo.sent;
 
