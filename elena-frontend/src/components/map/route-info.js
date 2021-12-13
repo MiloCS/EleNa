@@ -4,9 +4,9 @@ import Loading from './loading'
 import { useRoutingContext } from '../../context/routing-context';
 
 export default function RouteInfo({graph, distance, elevation}) {
+  // eslint-disable-next-line
   const [routingInfo, setRoutingInfo]= useRoutingContext();
   const sent = routingInfo.sent;
-
   return (
     <div>  
       {!sent ? null :
@@ -22,7 +22,7 @@ export default function RouteInfo({graph, distance, elevation}) {
                 Distance: {distance > 1000 ? `${Math.floor(distance) / 1000} km` : `${Math.floor(distance)} m`}
               </Typography>
               <Typography variant="body1" align="center" sx={{fontFamily: "Segoe UI", marginLeft: '4px'}}>
-                Elevation: {Math.floor(elevation)} meters
+                Elevation: {elevation} meters
               </Typography>
             </div>
           }
